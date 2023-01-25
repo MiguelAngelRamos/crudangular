@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: () => import('@modules/users/users.module').then(m => m.UsersModule)
   },
   {
+    path:'user-updated/:id', //* localhost:4200/users
+    loadChildren: () => import('@modules/updated-user/updated-user.module').then(m => m.UpdatedUserModule)
+  },
+  {
     path: '**',
     redirectTo: '/users'
   }
