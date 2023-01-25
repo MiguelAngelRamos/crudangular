@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: 'users', //* localhost:4200/users
     loadChildren: () => import('@modules/users/users.module').then(m => m.UsersModule)
+  },
+  {
+    path: '**',
+    redirectTo: '/users'
   }
 ];
 
