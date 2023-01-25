@@ -1,1 +1,39 @@
-<p>users-page works!</p>
+<div class="users-page">
+  <h2 class="text-center mt-5">Listado de Clientes</h2>
+  <div class="container mt-5">
+    <!-- Tabla -->
+    <table class="table table-dark table-hover">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">Nombre Cliente</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Empresa</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="listado-clientes">
+          <!-- row = fila -->
+        <tr *ngFor="let user of usersHtml">
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.telefono}}</td>
+          <td>{{ user.empresa}}</td>
+          <td>
+            <i 
+              class="fa-solid fa-pen-to-square mx-3"
+              (click)="updatedUser(user?.id)"
+            ></i>
+            <i 
+              class="fa-solid fa-trash"
+              (click)="deleteUser(user?.id)"
+              ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- control + a seleccionar todo
+control + k + f -->

@@ -26,4 +26,14 @@ export class UsersPageComponent implements OnInit {
       console.log(this.usersHtml);
     })
   }
+
+  updatedUser(id: any) {
+    console.log('updatedUser');
+    console.log(id);
+  }
+
+  deleteUser(id: any) {
+    console.log('deleteUser');
+    console.log(id);
+  }
 }

@@ -4,5 +4,5 @@ export interface IUser {
   email:    string;
   telefono: number | string;
   empresa:  string;
-  id:       number;
+  id?:       number;
 }
