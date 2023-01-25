@@ -1,1 +1,62 @@
-<p>user-updated works!</p>
+<div class="col-10">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-6 offset-3 formulario">
+        <!-- Formulario -->
+        <h2 class="text-center mb-5">Editar Cliente</h2>
+        <form id="formulario">
+
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="nombre"
+              name="nombre"
+              >
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo</label>
+            <input 
+              type="email" 
+              class="form-control" 
+              id="email"
+              name="email"
+             >
+          </div>
+
+          <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input 
+              type="tel" 
+              class="form-control" 
+              id="telefono"
+              name="telefono"
+             >
+          </div>
+
+          <div class="mb-3">
+            <label for="empresa" class="form-label">Empresa</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="empresa"
+              name="empresa"
+             >
+          </div>
+
+          <input type="hidden" name="id" id="id" value="">
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-dark">Editar Cliente</button>
+          </div>
+
+          <div class="form-text"></div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
