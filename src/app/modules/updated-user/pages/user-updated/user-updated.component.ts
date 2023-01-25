@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserUpdatedService } from '@modules/updated-user/services/user-updated.service';
 import { IUser } from '../../../../core/models/IUser';
@@ -8,7 +8,7 @@ import { IUser } from '../../../../core/models/IUser';
   templateUrl: './user-updated.component.html',
   styleUrls: ['./user-updated.component.css']
 })
-export class UserUpdatedComponent {
+export class UserUpdatedComponent implements OnInit {
 
   //* [(ngModel)]
   public userHtml: IUser = {
@@ -23,14 +23,22 @@ export class UserUpdatedComponent {
     private activatedRoute: ActivatedRoute,
     private router: Router
     ) {
-
   }
+
+  ngOnInit(): void {
+      this.getUserById();
+  }
+
+
   //* localhost:4200/user-updated/:id
   //* identificado al usuario queremos actualizar
   getUserById() {
     this.activatedRoute.paramMap.subscribe( params => {
       const id = Number(params.get('id'));
-      this.userUpdated.getUserById(id).subscribe( user => this.userHtml = user)
+      this.userUpdated.getUserById(id).subscribe( user => {
+        this.userHtml = user;
+        console.log(this.userHtml);
+      })
     });
   }
 

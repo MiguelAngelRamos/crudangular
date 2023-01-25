@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UpdatedUserRoutingModule } from './updated-user-routing.module';
 import { UserUpdatedComponent } from './pages/user-updated/user-updated.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { UserUpdatedComponent } from './pages/user-updated/user-updated.componen
   ],
   imports: [
     CommonModule,
-    UpdatedUserRoutingModule
+    UpdatedUserRoutingModule,
+    FormsModule //* formularios por template
   ]
 })
 export class UpdatedUserModule { }
