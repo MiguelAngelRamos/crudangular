@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
+import { Observable, map} from 'rxjs';
 import { IUser } from '@core/models/IUser';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
@@ -25,6 +25,8 @@ export class UserUpdatedService {
   //* usuario: IUser los nuevos datos actualizados a guardar en la BD (base de datos)
   updatedUser(id: number, usuario: IUser) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.put(`${this.URL}/usuarios/${id}`, usuario, { headers });
+    return this.http.put(`${this.URL}/usuarios/${id}`, usuario, { headers }).pipe(map( resp => {
+      return true;
+    }));
   }
 }

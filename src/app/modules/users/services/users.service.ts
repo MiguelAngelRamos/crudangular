@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IUser } from '@core/models/IUser';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from '../../../../environments/environment';
+import Swal from 'sweetalert2';
 
 
 @Injectable({
@@ -16,5 +17,20 @@ export class UsersService {
   getAllUser$():Observable<IUser[]> {
     return this.http.get<IUser[]>(`${this.URL}/usuarios`);
     //* `${this.URL}/usuarios` => http://localhost:3000/usuarios 
+  }
+
+  //* Eliminar El Usuario
+  deleteUser(id: number) {
+    const URL = `${this.URL}/usuarios/${id}`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.http.delete(URL, {headers}).pipe(map( resp => {
+      Swal.fire(
+        'Borrado!',
+        'El usuario a sido elimado!',
+        'success'
+      )
+      return true;
+    }));
   }
 }

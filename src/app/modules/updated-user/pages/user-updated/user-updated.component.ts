@@ -59,15 +59,18 @@ export class UserUpdatedComponent implements OnInit {
 
   const id = Number(this.userHtml.id);
   //* llamo al servicio
-
   this.userUpdated.updatedUser(id, this.userHtml).subscribe(
     resp => {
-
-    }
-  );
-
-
-
+      // console.log(resp);
+      if(resp) {
+        Swal.fire(
+          'Actualizado!',
+          'El usuario actualizado con exito!',
+          'success'
+        );
+      } //* fin del if
+    });
+    this.router.navigateByUrl('/users');
 
   }
 

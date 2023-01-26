@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '@modules/users/services/users.service';
 import { IUser } from '../../../../core/models/IUser';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-users-page',
@@ -34,7 +35,24 @@ export class UsersPageComponent implements OnInit {
   }
 
   deleteUser(id: any) {
-    console.log('deleteUser');
-    console.log(id);
+    const idUser = Number(id);
+
+    Swal.fire({
+      title: '¿Estas seguro?',
+      text: "Estas a punto de eliminar al usuario",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, borrar ahora!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.usersService.deleteUser(idUser).subscribe(resp => {
+          if(resp) {
+            this.getUserAll();
+          }
+        })
+      }
+    })
   }
 }
