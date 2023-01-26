@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('@modules/updated-user/updated-user.module').then(m => m.UpdatedUserModule)
   },
   {
+    path: 'create-user',
+    loadChildren: () => import('@modules/create-user/create-user.module').then(m => m.CreateUserModule)
+  },
+  {
     path: '**',
     redirectTo: '/users'
   }

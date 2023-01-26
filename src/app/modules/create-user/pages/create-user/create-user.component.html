@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-10">
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-6 offset-3 formulario">
+              <!-- Formulario -->
+              <h2 class="text-center mb-5">Crear Cliente</h2>
+              <form [formGroup]="forma" (ngSubmit)="createUser()">
+
+                <div class="mb-3">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="nombre"
+                    formControlName="nombre"
+                    >
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label">Correo</label>
+                  <input 
+                    type="email" 
+                    class="form-control" 
+                    id="email"
+                    formControlName="email"
+                   >
+                   <small class="text-danger" *ngIf="emailNoValido">
+                    Ingrese un correo valido
+                   </small>
+                </div>
+
+                <div class="mb-3">
+                  <label for="telefono" class="form-label">Teléfono</label>
+                  <input 
+                    type="tel" 
+                    class="form-control" 
+                    id="telefono"
+                    formControlName="telefono"
+                   
+                   >
+                </div>
+
+                <div class="mb-3">
+                  <label for="empresa" class="form-label">Empresa</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="empresa"
+                    formControlName="empresa"
+                  
+                   >
+                </div>
+
+                <input type="hidden" name="id" id="id" value="">
+
+                <div class="d-grid gap-2">
+                  <!-- aqui fue necesario cambiar el submit por button
+                  users:1 Form submission canceled because the form is not connected -->
+                  <button type="submit" class="btn btn-success">Crear Usuario</button>
+                </div>
+
+                <div class="form-text"></div>
+                
+              </form>
+
+              <pre>
+                Estado del formulario: {{ forma.valid }}
+                <br>
+                Status: {{ forma.status }}
+              </pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </div>
+</div>

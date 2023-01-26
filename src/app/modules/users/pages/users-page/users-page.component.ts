@@ -53,6 +53,6 @@ export class UsersPageComponent implements OnInit {
           }
         })
       }
-    })
+    });
   }
 }
