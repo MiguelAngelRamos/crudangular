@@ -20,7 +20,6 @@ export class UserUpdatedService {
     return this.http.get<IUser>(`${this.URL}/usuarios/${id}`, {headers});
   }
 
-
   //* Actualizamos al usuario en el servidor
   //* el id del usuario queremos actualizar
   //* usuario: IUser los nuevos datos actualizados a guardar en la BD (base de datos)

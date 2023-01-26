@@ -1,5 +1,4 @@
 <div class="container-fluid">
-
   <div class="row">
     <div class="col-10">
       <div class="container mt-5">
@@ -7,7 +6,7 @@
           <div class="col-6 offset-3 formulario">
             <!-- Formulario -->
             <h2 class="text-center mb-5">Editar Cliente</h2>
-            <form id="formulario">
+            <form (ngSubmit)="updatedUser()" #formUpdatedUser="ngForm">
     
               <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
@@ -17,18 +16,31 @@
                   id="nombre"
                   name="nombre"
                   [(ngModel)] ="userHtml.nombre"
+                  required
+                  minlength="3"
                   >
+                  <span class="form-text text-danger"
+                   *ngIf="nombreValido()">
+                    El nombre es requerido, debe un minimo 3 caracteres
+                  </span>
               </div>
     
               <div class="mb-3">
                 <label for="email" class="form-label">Correo</label>
                 <input 
+                  id="email"
                   type="email" 
                   class="form-control" 
-                  id="email"
                   name="email"
                   [(ngModel)] ="userHtml.email"
+                  [pattern]="regexEmail"
+                  required
                  >
+                 <!-- [email] = "true" -->
+                 <span class="form-text text-danger"
+                 *ngIf="correoValido()">
+                  El email es obligatorio y debe tener formato de email
+                </span>
               </div>
     
               <div class="mb-3">
@@ -39,7 +51,13 @@
                   id="telefono"
                   name="telefono"
                   [(ngModel)] ="userHtml.telefono"
+                  required
+                  minlength="5"
                  >
+                 <span class="form-text text-danger"
+                 *ngIf="telefonoValido()">
+                  El telefono es requerido y debe tener minimo de 5 caracteres
+                </span>
               </div>
     
               <div class="mb-3">
@@ -62,6 +80,22 @@
               <div class="form-text"></div>
               
             </form>
+            <div class="col"> 
+              <span>Valid</span>
+              <pre>{{ formUpdatedUser.valid }}</pre>
+
+              <span>Pristine</span>
+              <pre>{{ formUpdatedUser.pristine }}</pre>
+              <!-- no se han cambiado ningun valor interno del formulario       desde que se le presento al usuario-->
+
+              <span>Touched</span>
+              <pre>{{ formUpdatedUser.touched }}</pre> 
+              <!-- El usuario a tocado el formulario -->
+              <span>Value</span>
+              <pre>{{ formUpdatedUser.value | json }}</pre>
+
+            </div>
+
           </div>
         </div>
       </div>

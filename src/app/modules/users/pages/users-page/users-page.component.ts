@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '@modules/users/services/users.service';
 import { IUser } from '../../../../core/models/IUser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-page',
@@ -12,7 +13,8 @@ export class UsersPageComponent implements OnInit {
   //* para poder renderizando en el html
   public usersHtml: IUser[] = [];
   // public users: Array<IUser> = [];
-  constructor( private usersService: UsersService) {
+  constructor( private usersService: UsersService,
+               private router: Router ) {
 
   }
   ngOnInit(): void {
@@ -28,8 +30,7 @@ export class UsersPageComponent implements OnInit {
   }
 
   updatedUser(id: any) {
-    console.log('updatedUser');
-    console.log(id);
+    this.router.navigate(['/user-updated', id]);
   }
 
   deleteUser(id: any) {
